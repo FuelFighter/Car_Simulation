@@ -7,8 +7,9 @@ Car parameters are found in Initialization.m, this file will also run the simuli
 
 Implemented:
 * Simple Dynamic Model of the Car.
-* Very Simple, not very good track following.
+* OK track following.
 
 Todo:
-* Smooth out track data, too noisy right now.
-* Add controllers, PID, LQR, Optimization of track.. Everything basicly.
+* Add controllers, PID or LQR.
+* Motor Models
+* Optimization
