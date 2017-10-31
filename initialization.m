@@ -16,6 +16,13 @@ gravity = 9.81;
 A = -1/car_mass*car_rho*car_aero_area*car_cd - car_roll_friction;
 B = 1/(car_mass*car_tire_rad);
 
+
+%% Testing parameters
+T_sat = 5;
+v_d = 25/3.6;
+Kp = 1;
+Ki = 1/10 * Kp;
+
 %% Motor Parameters Re50
 Vn_1 = 48; 			% Nominal Voltage
 In_1 = 4.58;		% Nominal Current
@@ -44,12 +51,5 @@ Inert_2 = 1340; 	% Rotor Inertia, gcm^2
 
 %% Load Smoothed Out Track
 
-load('smooth_track.mat');
-
+load('heightmap.mat');
 sim('simpleCarModel.slx');
-
-plot(simout.data(:,2),simout.data(:,1))
-xlim([0 1660]);
-hold on
-plotTrack = downsample(smooth_track_cubic,100);
-plot(plotTrack(:,2));

@@ -20,27 +20,15 @@ for row = 2:rows
      simplified_track(row,2) = track(row,3);
 end
 
-%% Extrapolate Heightmap
+%% Smooth out heightmap
 
-smooth_track_cubic = zeros(length(steps),2);
-smooth_track_cubic(:,1) = steps;
-smooth_track_cubic(:,2) = pchip(simplified_track(:,1),simplified_track(:,2),steps);
-save('smooth_track.mat', 'smooth_track_cubic');
+smooth_track = smooth(simplified_track(:,2),50);
+%plot(simplified_track(:,1),heightmap(:,1),simplified_track(:,1),simplified_track(:,2));
 
-%% Anglemap
+heightmap = zeros(1660,2);
+heightmap(:,1) = 0:1:1659;
+heightmap(:,2) = smooth_track(:);
 
-track_with_angles = simplified_track;
-track_with_angles(1,2) = 0;
-
-for row = 2:rows
-   track_with_angles(row,2) = tan((simplified_track(row,2)-simplified_track(row-1,2))/(simplified_track(row,1)-simplified_track(row-1,1))); 
-end
-
-% Extrapolate Anglemap
-
-smooth_anglemap = zeros(length(steps),2);
-smooth_anglemap(:,1) = steps;
-smooth_anglemap(:,2) = pchip(track_with_angles(:,1),track_with_angles(:,2),steps);
-save('smooth_track_angles.mat','smooth_anglemap');
+save('heightmap.mat','heightmap');
 
 
