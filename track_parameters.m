@@ -29,6 +29,24 @@ heightmap = zeros(1660,2);
 heightmap(:,1) = 0:1:1659;
 heightmap(:,2) = smooth_track(:);
 
-save('heightmap.mat','heightmap');
+save('track_heightmap.mat','heightmap');
+
+% Smooth anglemap
+anglemap = zeros(1660,2);
+anglemap(:,1) = 0:1:1659;
+
+for n = 2:1:1660
+    anglemap(n,2) = atan(heightmap(n,2)-heightmap(n-1,2));
+end
+smooth_angle_track = zeros(1660,2);
+smooth_angle_track(:,2) = smooth(anglemap(:,2),25);
+smooth_angle_track(:,1) = 0:1:1659;
+
+plot(smooth_angle_track(:,2));
+hold on
+plot(anglemap(:,2));
+save('track_angles.mat','smooth_angle_track')
+grid on
+
 
 

@@ -2,13 +2,17 @@ clear all;
 close all;
 
 %% Car Parameters
-car_mass = 95;
+car_vehicle_mass = 95;
 car_cd = 0.16;
 car_rho = 1.225;
 car_aero_area = 0.5;
 car_roll_friction = 0.01;
 car_tire_rad = 0.55/2;
 car_driver_mass = 70;
+car_mass = car_vehicle_mass + car_driver_mass;
+
+
+aero_c = 0.5*car_rho*car_cd*car_aero_area;
 
 gravity = 9.81;
 
@@ -17,11 +21,14 @@ A = -1/car_mass*car_rho*car_aero_area*car_cd - car_roll_friction;
 B = 1/(car_mass*car_tire_rad);
 
 
+%% Non Linear Model
+M_c = car_mass; C_c = aero_c; N_c = car_roll_friction; D_c = car_mass*gravity; B_c = 1/car_tire_rad;    
+
 %% Testing parameters
 T_sat = 5;
 v_d = 25/3.6;
 Kp = 1;
-Ki = 1/10 * Kp;
+Ki = 1/100 * Kp;
 
 %% Motor Parameters Re50
 Vn_1 = 48; 			% Nominal Voltage
@@ -51,5 +58,6 @@ Inert_2 = 1340; 	% Rotor Inertia, gcm^2
 
 %% Load Smoothed Out Track
 
-load('heightmap.mat');
-sim('simpleCarModel.slx');
+load('track_angles.mat');
+sim('nonlinearCarModel.slx');
+plotting
