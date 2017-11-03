@@ -30,6 +30,10 @@ v_d = 25/3.6;
 Kp = 1;
 Ki = 1/100 * Kp;
 
+% Electrical Characteristics
+V_limit = 50;       % Voltage Limit
+I_limit = 50;       % Current Limit
+
 %% Motor Parameters Re50
 Vn_1 = 48; 			% Nominal Voltage
 In_1 = 4.58;		% Nominal Current
@@ -38,10 +42,11 @@ N0_1 = 4900; 		% No Load RPM
 I0_1 = 0.0884; 		% No Load Current, A
 R_1 = 0.608; 		% Winding Resistance, Ohm
 L_1 = 0.423; 		% Inductance, mHenry
-Kv_1 = 102;			% Speed constant, rpm/V
+Kv_1 = 102*2*pi/60; % Speed constant, rpm/V -> rad/s /V
 Ki_1 = 0.0934;		% Torque constant, Nm/A
 Tm_1 = 3.78;		% Mechanical Time Constant, ms
 Inert_1 = 542;      % Rotor Inertia, gcm^2
+Gr_1 = 10;          % Gear Ratio from wheel rotations to motor rotations
 
 %% Motor Paramteres Re65
 Vn_2 = 48; 			% Nominal Voltage
@@ -58,6 +63,6 @@ Inert_2 = 1340; 	% Rotor Inertia, gcm^2
 
 %% Load Smoothed Out Track
 
-load('track_angles.mat');
-sim('nonlinearCarModel.slx');
-plotting
+% load('track_angles.mat');
+% sim('nonlinearCarModel.slx');
+% plotting
