@@ -11,7 +11,6 @@ car_tire_rad = 0.55/2;
 car_driver_mass = 70;
 car_mass = car_vehicle_mass + car_driver_mass;
 
-
 aero_c = 0.5*car_rho*car_cd*car_aero_area;
 
 gravity = 9.81;
@@ -27,11 +26,13 @@ M_c = car_mass; C_c = aero_c; N_c = car_roll_friction; D_c = car_mass*gravity; B
 %% Testing parameters
 T_sat = 5;
 v_d = 25/3.6;
-Kp = 1;
-Ki = 1/100 * Kp;
+
+% Velocity Controller
+Kp_vel = 1;
+Ki_vel = 0.1;
 
 % Electrical Characteristics
-V_limit = 50;       % Voltage Limit
+V_limit = 45;       % Voltage Limit
 I_limit = 50;       % Current Limit
 
 %% Motor Parameters Re50
@@ -47,6 +48,9 @@ Ki_1 = 0.0934;		% Torque constant, Nm/A
 Tm_1 = 3.78;		% Mechanical Time Constant, ms
 Inert_1 = 542;      % Rotor Inertia, gcm^2
 Gr_1 = 10;          % Gear Ratio from wheel rotations to motor rotations
+% PI controller for Re_50
+Kp_re50 = 1;
+Ki_re50 = 0.1;
 
 %% Motor Paramteres Re65
 Vn_2 = 48; 			% Nominal Voltage
@@ -63,6 +67,6 @@ Inert_2 = 1340; 	% Rotor Inertia, gcm^2
 
 %% Load Smoothed Out Track
 
-% load('track_angles.mat');
-% sim('nonlinearCarModel.slx');
-% plotting
+load('track_angles.mat');
+sim('nonlinearCarModel.slx');
+plotting
