@@ -49,8 +49,8 @@ Tm_1 = 3.78;		% Mechanical Time Constant, ms
 Inert_1 = 542;      % Rotor Inertia, gcm^2
 Gr_1 = 10;          % Gear Ratio from wheel rotations to motor rotations
 % PI controller for Re_50
-Kp_re50 = 1;
-Ki_re50 = 0.1;
+Kp_re50 = 1000*L_1;
+Ki_re50 = 1000*R_1;
 
 %% Motor Paramteres Re65
 Vn_2 = 48; 			% Nominal Voltage
