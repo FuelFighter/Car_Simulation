@@ -9,7 +9,7 @@ car_aero_area = 0.5;
 
 car_roll_friction = 0.01;
 car_tire_rad = 0.55/2;
-car_tire_inertia = 0.204*4;
+car_tire_inertia = (0.204*4)/car_tire_rad^2;
 
 car_driver_mass = 70;
 car_vehicle_mass = 95;
