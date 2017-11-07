@@ -68,5 +68,5 @@ Inert_2 = 1340; 	% Rotor Inertia, gcm^2
 %% Load Smoothed Out Track
 
 load('track_angles.mat');
-sim('nonlinearCarModel.slx');
-plotting
+%sim('nonlinearCarModel.slx');
+%plotting
