@@ -51,10 +51,10 @@ Kv_1 = 102*2*pi/60; % Speed constant, rpm/V -> rad/s /V
 Ki_1 = 0.0934;		% Torque constant, Nm/A
 Tm_1 = 3.78;		% Mechanical Time Constant, ms
 Inert_1 = 542;      % Rotor Inertia, gcm^2
-Gr_1 = 10;          % Gear Ratio from wheel rotations to motor rotations
+Gr_1 = 15;          % Gear Ratio from wheel rotations to motor rotations
 % PI controller for Re_50
-Kp_re50 = 1000*L_1;
-Ki_re50 = 1000*R_1;
+Kp_re50 = 100*L_1;
+Ki_re50 = 100*R_1;
 
 %% Motor Paramteres Re65
 Vn_2 = 48; 			% Nominal Voltage
