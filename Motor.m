@@ -1,0 +1,20 @@
+classdef Motor
+    properties
+        nom_volt
+        no_load_speed
+        no_load_current
+        nom_speed
+        nom_torque
+        nom_current
+        max_current
+        stall_torque
+        stall_current
+        resistance
+        inductance
+        torque_constant
+        speed_constant
+        speed_torque_gradient
+        mech_time_constant
+        rotor_inertia
+    end
+end
