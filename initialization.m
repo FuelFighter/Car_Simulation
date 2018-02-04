@@ -1,5 +1,7 @@
 clear all;
 close all;
+%% temp
+load('track_angles.mat');
 
 %% Car Parameters
 
@@ -39,7 +41,7 @@ m1_volt_limit = 48;
 m2_volt_limit = 48;
 
 %Simulation Parameters
-simulation_time = 200;
+simulation_time = 150;
 desired_velocity = 7;
 drivetrain_loss = 0.95;
 
@@ -51,10 +53,10 @@ Gr_2 = 15;
 zeta = 1;                   % Damping factor
 omega_b = 0.1;              % Controller Bandwidth, how fast should the controller react. 0.1 is 10 times a second. 
 omega_n =  omega_b/(sqrt(1-2*zeta^2+sqrt(4*zeta^4-4*zeta^2+2)));   % Bandwidth of the complete system
-Kp_vel = omega_n^2 * M_c;
+Kp_vel = 1700; %omega_n^2 * M_c;
 d = C_c + (3/7);            % Simplified linearization of the nonlinear aerodynamic drag
 Kd_vel = 0;%2*zeta*omega_n*M_c - d;
-Ki_vel = omega_n*Kp_vel/10;
+Ki_vel = 0.00015;%omega_n*Kp_vel/10;
 
 %Torque Controllers
 Kp_m1 = 100*Motor1.inductance;
@@ -64,8 +66,3 @@ Ki_m1 = 100*Motor1.resistance;
 Kp_m2 = 100*Motor2.inductance;
 Ki_m2 = 100*Motor2.resistance;
 
-%% Load Smoothed Out Track
-
-load('track_angles.mat');
-%sim('nonlinearCarModel.slx');
-%plotting
