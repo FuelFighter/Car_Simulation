@@ -1,7 +1,5 @@
 clear all;
 close all;
-%% temp
-load('track_angles.mat');
 
 %% Car Parameters
 
@@ -41,7 +39,7 @@ m1_volt_limit = 48;
 m2_volt_limit = 48;
 
 %Simulation Parameters
-simulation_time = 150;
+simulation_time = 142;
 desired_velocity = 7;
 drivetrain_loss = 0.95;
 
@@ -65,4 +63,8 @@ Ki_m1 = 100*Motor1.resistance;
 %Torque Controllers
 Kp_m2 = 100*Motor2.inductance;
 Ki_m2 = 100*Motor2.resistance;
+
+load('track2018_only_values.xlsx - Munka1.csv')
+track = [track2018_only_values_xlsx___Munka1(:,3),track2018_only_values_xlsx___Munka1(:,4)];
+track_parameters
 

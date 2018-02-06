@@ -1,11 +1,11 @@
 %% Simulate Different Speeds and Acceleration;
     
 %% Velocity trajectory
-max_vel = 12;
-min_avg_vel = 6.93;
+max_vel = 9;
+min_avg_vel = 6.71;
 max_time = 140;   
         
-delta_v = 0.25;
+delta_v = 0.01;
 
 lowest = struct('max_vel',0,'c_time',0,'energy',999999);
 
@@ -13,13 +13,13 @@ results = struct('max_vel',zeros(100,1),'c_time',zeros(100,1),'energy',zeros(100
 
 %%
 for n = 1:1:100
-    c_time = 5;
+    c_time = 9;
     temp = 1000;
     
     max_vel = max_vel - delta_v;
     results.max_vel(n) = max_vel;
     
-    vel_traj = [-1      0      c_time       140-c_time    max_time;   % time
+    vel_traj = [-1      0      c_time       max_time-c_time    max_time;   % time
                 0       0      max_vel      max_vel       0      ];       % m/s 
     
     while temp > min_avg_vel
@@ -45,7 +45,7 @@ for n = 1:1:100
 
     sim nonlinearCarModel
     
-    results.energy(n) = total_motor_work(length(total_motor_work));
+    results.energy(n) = alternative_motor_work(length(total_motor_work));
     if results.energy(n) < lowest.energy
         lowest.energy = results.energy(n);
         lowest.max_vel = results.max_vel(n);
