@@ -1,8 +1,8 @@
 %% Simulate Different Speeds and Acceleration;
     
 %% Velocity trajectory
-max_vel = 8.20
-min_avg_vel = 6.71;
+max_vel = 8.5
+min_avg_vel = 6.85;
 max_time = 140;   
         
 delta_v = 0.1;
@@ -15,8 +15,6 @@ results = struct('max_vel',zeros(100,1),'c_time',zeros(100,1),'energy',zeros(100
 for n = 1:1:1
     c_time = 9;
     temp = 1000;
-    
-    %max_vel = max_vel - delta_v;
     results.max_vel(n) = max_vel;
     
     vel_traj = [-1      0      c_time       max_time-c_time    max_time;   % time
@@ -55,4 +53,6 @@ for n = 1:1:1
     
     fprintf("Energy used: %.f Joules\n",results.energy(n));
 
+    
+    max_vel = max_vel - delta_v;
 end
