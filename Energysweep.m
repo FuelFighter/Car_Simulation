@@ -45,7 +45,7 @@ for n = 1:1:1
 
     sim nonlinearCarModel
     
-    results.energy(n) = alternative_motor_work(length(total_motor_work));
+    results.energy(n) = total_motor_work(length(total_motor_work));
     if results.energy(n) < lowest.energy
         lowest.energy = results.energy(n);
         lowest.max_vel = results.max_vel(n);
@@ -56,3 +56,6 @@ for n = 1:1:1
     fprintf("Energy used: %.f Joules\n",results.energy(n));
 
 end
+
+
+
